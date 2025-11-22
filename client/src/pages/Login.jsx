@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../services/firebase';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import API from '../services/api';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -20,7 +20,7 @@ const Login = () => {
             await signInWithEmailAndPassword(auth, email, password);
 
             // 2. Login in Backend to get JWT
-            const { data } = await axios.post('http://localhost:5001/api/auth/login', {
+            const { data } = await API.post('/auth/login', {
                 email,
                 password
             });
@@ -49,7 +49,7 @@ const Login = () => {
             const idToken = await user.getIdToken();
 
             // 3. Send to backend for verification and JWT generation
-            const { data } = await axios.post('http://localhost:5001/api/auth/google', {
+            const { data } = await API.post('/auth/google', {
                 idToken
             });
 
