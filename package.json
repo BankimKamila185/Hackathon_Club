@@ -1,0 +1,23 @@
+{
+  "name": "hackathon-club",
+  "version": "1.0.0",
+  "description": "Hackathon Platform - Full Stack Application",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build:client": "cd client && npm run build",
+    "deploy": "npm run build:client && firebase deploy --only hosting",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "install:all": "cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": [
+    "hackathon",
+    "platform",
+    "firebase",
+    "react",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+
